@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom"
 
 export default function App() {
   return (
@@ -6,11 +6,9 @@ export default function App() {
       <h1>Basic Example</h1>
 
       <p>
-        This example demonstrates some of the core features of React Router
-        including nested <code>&lt;Route&gt;</code>s,{" "}
-        <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a
-        "*" route (aka "splat route") to render a "not found" page when someone
-        visits an unrecognized URL.
+        This example demonstrates some of the core features of React Router including nested <code>&lt;Route&gt;</code>
+        s, <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a "*" route (aka "splat route") to render
+        a "not found" page when someone visits an unrecognized URL.
       </p>
 
       {/* Routes nest inside one another. Nested route paths build upon
@@ -29,7 +27,7 @@ export default function App() {
         </Route>
       </Routes>
     </div>
-  );
+  )
 }
 
 function Layout() {
@@ -61,7 +59,7 @@ function Layout() {
           the child routes we defined above. */}
       <Outlet />
     </div>
-  );
+  )
 }
 
 function Home() {
@@ -69,7 +67,7 @@ function Home() {
     <div>
       <h2>Home</h2>
     </div>
-  );
+  )
 }
 
 function About() {
@@ -77,7 +75,7 @@ function About() {
     <div>
       <h2>About</h2>
     </div>
-  );
+  )
 }
 
 function Dashboard() {
@@ -85,7 +83,7 @@ function Dashboard() {
     <div>
       <h2>Dashboard</h2>
     </div>
-  );
+  )
 }
 
 function NoMatch() {
@@ -96,5 +94,5 @@ function NoMatch() {
         <Link to="/">Go to the home page</Link>
       </p>
     </div>
-  );
+  )
 }

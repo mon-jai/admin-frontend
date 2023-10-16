@@ -16,7 +16,7 @@ export default defineConfig({
         "process.env.NODE_ENV": JSON.stringify("development"),
       },
     }),
-    react(),
+    react({ babel: { plugins: ["babel-plugin-styled-components"] } }),
   ],
   resolve: process.env.USE_SOURCE
     ? {

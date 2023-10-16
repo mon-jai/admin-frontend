@@ -1,0 +1,9 @@
+arrowParens: "avoid"
+printWidth: 120
+semi: false
+plugins: ["@trivago/prettier-plugin-sort-imports"]
+importOrder:
+  - "<THIRD_PARTY_MODULES>"
+  - "^\\.{1,2}\\/.+\\.(js|ts|jsx|tsx)$"
+importOrderSeparation: true
+importOrderSortSpecifiers: true

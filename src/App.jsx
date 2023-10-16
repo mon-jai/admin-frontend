@@ -1,4 +1,5 @@
 import Layout from "./components/Layout"
+import Activity from "./routes/Activity"
 import { Link, Route, Routes } from "react-router-dom"
 
 export default function App() {
@@ -9,8 +10,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="activity" element={<Activity />} />
 
         {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -25,22 +25,6 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
-    </div>
-  )
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  )
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
     </div>
   )
 }

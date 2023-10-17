@@ -1,32 +1,114 @@
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
+import styled from "styled-components"
+
+const Root = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`
+
+const SideBar = styled.div`
+  flex-direction: column;
+  width: 320px;
+  padding: 20px;
+  background: #fbfbfb;
+`
+
+const SearchBarContainer = styled.div`
+  padding: 6px 10px;
+  border: 1px solid #979797;
+  margin-bottom: 32px;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  gap: 10px;
+`
+
+const SearchBar = styled.input`
+  border: 0;
+  color: #b3b3b3;
+  flex-grow: 1;
+`
+
+const NavigationMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+const SectionContent = styled.div`
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+`
+
+const SectionItemBase = styled.div`
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+`
+
+const SectionHeader = styled(SectionItemBase)`
+  display: flex;
+  align-items: center;
+`
+
+const SectionHeaderExtended = styled(SectionHeader)`
+  color: #fff;
+  background-color: #505050cc;
+  font-weight: 700;
+`
+
+const ExpandIconContainer = styled.div`
+  margin-left: auto;
+  height: fit-content;
+  line-height: 0;
+`
+
+const SectionItem = styled(SectionItemBase)`
+  color: #505050;
+  line-height: 20px;
+`
+
+const SectionItemSelected = styled(SectionItem)`
+  background: rgba(239, 239, 239, 0.8);
+`
+
+const ContentContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`
+
+const SidebarButtonContainer = styled.div`
+  display: flex;
+  padding: 10px 20px;
+  height: 64px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+`
+
+const SidebarButton = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+`
 
 export default function Layout() {
   const [drawerOpen, setDrawerOpen] = useState(true)
   const [extendedItems, setExtendedItems] = useState(/** @type {("activity" | "nfc" | "lucky-draw")[]} */ ([]))
 
   return (
-    <div style={{ display: "flex", width: "100%", height: "100%" }}>
-      <div
+    <Root>
+      <SideBar
         style={{
           display: drawerOpen ? "flex" : "none",
-          flexDirection: "column",
-          width: "320px",
-          padding: "20px",
-          background: "#FBFBFB",
         }}
       >
-        <div
-          style={{
-            padding: "6px 10px",
-            border: "1px solid #979797",
-            marginBottom: "32px",
-            borderRadius: "6px",
-            background: "#FFF",
-            display: "flex",
-            gap: "10px",
-          }}
-        >
+        <SearchBarContainer>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               id="Vector"
@@ -34,24 +116,12 @@ export default function Layout() {
               fill="#B3B3B3"
             ></path>
           </svg>
-          <input type="text" placeholder="搜尋活動名稱" style={{ border: "0", color: "#B3B3B3", flexGrow: "1" }} />
-        </div>
+          <SearchBar type="text" placeholder="搜尋活動名稱" />
+        </SearchBarContainer>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <NavigationMenu>
           <div>
-            <div
-              style={{
-                color: "#FFF",
-                fontFamily: "Montserrat",
-                fontSize: "14px",
-                fontWeight: "700",
-                backgroundColor: "#505050CC",
-                padding: "6px 10px",
-                borderRadius: "6px",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
+            <SectionHeaderExtended
               onClick={() =>
                 setExtendedItems(extendedItems =>
                   extendedItems.includes("activity")
@@ -61,114 +131,31 @@ export default function Layout() {
               }
             >
               活動管理
-              <div
+              <ExpandIconContainer
                 style={{
-                  marginLeft: "auto",
-                  height: "fit-content",
-                  lineHeight: 0,
                   transform: extendedItems.includes("activity") ? "" : "rotate(180deg)",
                 }}
               >
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="white" />
                 </svg>
-              </div>
-            </div>
-            <div
+              </ExpandIconContainer>
+            </SectionHeaderExtended>
+            <SectionContent
               style={{
-                padding: "10px",
                 display: extendedItems.includes("activity") ? "flex" : "none",
-                flexDirection: "column",
-                gap: "10px",
               }}
             >
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  fontWeight: "700",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                  background: "rgba(239, 239, 239, 0.80)",
-                }}
-              >
-                活動總覽
-              </div>
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                }}
-              >
-                建立新活動
-              </div>
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                }}
-              >
-                建立活動群組
-              </div>
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                }}
-              >
-                活動群組 1
-              </div>
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                }}
-              >
-                活動群組 2
-              </div>
-              <div
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  color: "#505050",
-                  lineHeight: "20px",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                }}
-              >
-                活動群組 3
-              </div>
-            </div>
+              <SectionItemSelected>活動總覽</SectionItemSelected>
+              <SectionItem>建立新活動</SectionItem>
+              <SectionItem>建立活動群組</SectionItem>
+              <SectionItem>活動群組 1</SectionItem>
+              <SectionItem>活動群組 2</SectionItem>
+              <SectionItem>活動群組 3</SectionItem>
+            </SectionContent>
           </div>
           <div>
-            <div
-              style={{
-                fontFamily: "Montserrat",
-                fontSize: "14px",
-                padding: "6px 10px",
-                borderRadius: "6px",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
+            <SectionHeader
               onClick={() =>
                 setExtendedItems(extendedItems =>
                   extendedItems.includes("nfc")
@@ -178,31 +165,19 @@ export default function Layout() {
               }
             >
               NFT管理
-              <div
+              <ExpandIconContainer
                 style={{
-                  marginLeft: "auto",
-                  height: "fit-content",
-                  lineHeight: 0,
                   transform: extendedItems.includes("nfc") ? "" : "rotate(180deg)",
                 }}
               >
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
                 </svg>
-              </div>
-            </div>
+              </ExpandIconContainer>
+            </SectionHeader>
           </div>
           <div>
-            <div
-              style={{
-                fontFamily: "Montserrat",
-                fontSize: "14px",
-                padding: "6px 10px",
-                borderRadius: "6px",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
+            <SectionHeader
               onClick={() =>
                 setExtendedItems(extendedItems =>
                   extendedItems.includes("lucky-draw")
@@ -212,38 +187,23 @@ export default function Layout() {
               }
             >
               抽獎管理
-              <div
+              <ExpandIconContainer
                 style={{
-                  marginLeft: "auto",
-                  height: "fit-content",
-                  lineHeight: 0,
                   transform: extendedItems.includes("lucky-draw") ? "" : "rotate(180deg)",
                 }}
               >
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
                 </svg>
-              </div>
-            </div>
+              </ExpandIconContainer>
+            </SectionHeader>
           </div>
-        </div>
-      </div>
-
-      <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-        <div
-          style={{
-            display: "flex",
-            padding: "10px 20px",
-            height: "64px",
-            boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-          }}
-        >
-          <div
+        </NavigationMenu>
+      </SideBar>
+      <ContentContainer>
+        <SidebarButtonContainer>
+          <SidebarButton
             style={{
-              display: "flex",
-              alignItems: "center",
-              marginRight: "10px",
-              cursor: "pointer",
               transform: drawerOpen ? "" : "rotate(-180deg)",
             }}
             onClick={() => setDrawerOpen(drawerOpen => !drawerOpen)}
@@ -255,7 +215,7 @@ export default function Layout() {
                 fill="#505050"
               />
             </svg>
-          </div>
+          </SidebarButton>
           <svg width={104} height={44} viewBox="0 0 104 44" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M69.0747 3.13022V3.95895H69.0016V12.7244H74.9087V8.07532H93.4189V12.7244H99.326V8.07532V3.95895V3.13022H69.0747Z"
@@ -314,13 +274,13 @@ export default function Layout() {
               fill="#C4C4C4"
             />
           </svg>
-        </div>
+        </SidebarButtonContainer>
 
         {/* An <Outlet> renders whatever child route is currently active,
           so you can think about this <Outlet> as a placeholder for
           the child routes we defined above. */}
         <Outlet />
-      </div>
-    </div>
+      </ContentContainer>
+    </Root>
   )
 }

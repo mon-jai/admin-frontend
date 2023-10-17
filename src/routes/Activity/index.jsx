@@ -1,6 +1,53 @@
 import GridView from "./GridView"
 import TableView from "./TableView"
 import { useState } from "react"
+import styled from "styled-components"
+
+const Container = styled.div`
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
+
+const PageTitle = styled.div`
+  color: #000;
+  font-family: Montserrat;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 8px 5px;
+`
+
+const Toolbar = styled.div`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+`
+
+const ActivityFilterSelect = styled.select`
+  width: 290px;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #979797;
+`
+
+const ViewModeControl = styled.div`
+  display: flex;
+  border: 1px solid black;
+  margin-left: auto;
+  border-radius: 6px;
+  overflow: hidden;
+`
+
+const ViewModeButton = styled.div`
+  width: 44px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const dummyActivities = [
   {
@@ -47,64 +94,22 @@ export default function Activity() {
   )
 
   return (
-    <div style={{ padding: "30px", display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div
-        style={{
-          color: "#000",
-          fontFamily: "Montserrat",
-          fontSize: "36px",
-          fontWeight: 700,
-          lineHeight: 1,
-          padding: "8px 5px",
-        }}
-      >
-        活動總覽
-      </div>
-      <div style={{ display: "flex", gap: "20px", width: "100%" }}>
-        <select
-          style={{
-            width: "290px",
-            fontSize: "14px",
-            padding: "6px 10px",
-            borderRadius: "6px",
-            border: "1px solid #979797",
-          }}
-        >
+    <Container>
+      <PageTitle>活動總覽</PageTitle>
+      <Toolbar>
+        <ActivityFilterSelect>
           <option disabled selected>
             全部狀態
           </option>
-        </select>
-        <select
-          style={{
-            width: "290px",
-            fontSize: "14px",
-            padding: "6px 10px",
-            borderRadius: "6px",
-            border: "1px solid #979797",
-          }}
-        >
+        </ActivityFilterSelect>
+        <ActivityFilterSelect>
           <option disabled selected>
             建立活動日期
           </option>
-        </select>
-        <div
-          style={{
-            display: "flex",
-            border: "1px solid black",
-            marginLeft: "auto",
-            borderRadius: "6px",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              width: "44px",
-              height: "32px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: viewMode === "grid" ? "black" : "",
-            }}
+        </ActivityFilterSelect>
+        <ViewModeControl>
+          <ViewModeButton
+            style={{ background: viewMode === "grid" ? "black" : "" }}
             onClick={() => setViewMode("grid")}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} viewBox="0 0 19 19" fill="none">
@@ -113,16 +118,9 @@ export default function Activity() {
                 fill={viewMode === "grid" ? "white" : "black"}
               />
             </svg>
-          </div>
-          <div
-            style={{
-              width: "44px",
-              height: "32px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: viewMode === "table" ? "black" : "",
-            }}
+          </ViewModeButton>
+          <ViewModeButton
+            style={{ background: viewMode === "table" ? "black" : "" }}
             onClick={() => setViewMode("table")}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width={20} height={17} viewBox="0 0 20 17" fill="none">
@@ -131,10 +129,10 @@ export default function Activity() {
                 fill={viewMode === "table" ? "white" : "black"}
               />
             </svg>
-          </div>
-        </div>
-      </div>
+          </ViewModeButton>
+        </ViewModeControl>
+      </Toolbar>
       {viewMode === "grid" ? <GridView activities={activities} /> : <TableView activities={activities} />}
-    </div>
+    </Container>
   )
 }

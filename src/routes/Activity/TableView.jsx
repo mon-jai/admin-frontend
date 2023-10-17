@@ -1,90 +1,153 @@
+import styled from "styled-components"
+
+const Div0 = styled.div`
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Div1 = styled.div`
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+`
+
+const Div2 = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: unset;
+`
+
+const Div3 = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Div4 = styled.div`
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+`
+
+const Div5 = styled.div`
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  color: #b3b3b3;
+`
+
+const Table0 = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`
+
+const Tr0 = styled.tr`
+  height: 64px;
+  border-top: 2px solid #dadada;
+  border-bottom: 2px solid #dadada;
+`
+
+const Td0 = styled.td`
+  text-align: center;
+`
+
+const Td1 = styled.td`
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+`
+
+const Div6 = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+const TableContentTd = styled.td`
+  color: #505050;
+  font-family: Montserrat;
+`
+
+const Td2 = styled(TableContentTd)`
+  font-size: 18px;
+  text-align: center;
+  font-weight: 700;
+`
+
+const Td3 = styled(TableContentTd)`
+  font-size: 16px;
+`
+
 export default function TableView({ activities }) {
   return (
     <div style={{}}>
-      <div style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ fontFamily: "Montserrat", fontSize: "18px", fontWeight: 500, lineHeight: "24px" }}>
-          共 {activities.length} 筆資料
-        </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "unset" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+      <Div0>
+        <Div1>共 {activities.length} 筆資料</Div1>
+        <Div2>
+          <Div3>
             <svg xmlns="http://www.w3.org/2000/svg" width={8} height={12} viewBox="0 0 8 12" fill="none">
               <path d="M7.41 10.58L2.83 6L7.41 1.41L6 0L0 6L6 12L7.41 10.58Z" fill="#505050" />
             </svg>
-          </div>
-          <div style={{ fontFamily: "Montserrat", fontSize: "16px", fontWeight: "500" }}>1</div>
-          <div style={{ fontFamily: "Montserrat", fontSize: "16px", fontWeight: "500", color: "#B3B3B3" }}>/</div>
-          <div style={{ fontFamily: "Montserrat", fontSize: "16px", fontWeight: "500", color: "#B3B3B3" }}>1</div>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          </Div3>
+          <Div4>1</Div4>
+          <Div5>/</Div5>
+          <Div5>1</Div5>
+          <Div3>
             <svg xmlns="http://www.w3.org/2000/svg" width={8} height={12} viewBox="0 0 8 12" fill="none">
               <path d="M0.59 10.58L5.17 6L0.59 1.41L2 0L8 6L2 12L0.59 10.58Z" fill="#505050" />
             </svg>
-          </div>
-        </div>
-      </div>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          </Div3>
+        </Div2>
+      </Div0>
+      <Table0>
         <tbody>
-          <tr style={{ height: "64px", borderTop: "2px solid #DADADA", borderBottom: "2px solid #DADADA" }}>
-            <td style={{ textAlign: "center" }}>
+          <Tr0>
+            <Td0>
               <svg xmlns="http://www.w3.org/2000/svg" width={10} height={12} viewBox="0 0 10 12" fill="none">
                 <path d="M10 5L5 4.37114e-07L0 5L10 5Z" fill="#757575" />
                 <path d="M10 7L5 12L-4.37114e-07 7L10 7Z" fill="#757575" />
               </svg>
-            </td>
-            <td style={{ fontFamily: "Montserrat", fontSize: "18px", fontWeight: 700, lineHeight: "24px" }}>
-              活動狀態
-            </td>
-            <td style={{ fontFamily: "Montserrat", fontSize: "18px", fontWeight: 700, lineHeight: "24px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            </Td0>
+            <Td1>活動狀態</Td1>
+            <Td1>
+              <Div6>
                 回答數
                 <svg xmlns="http://www.w3.org/2000/svg" width={10} height={12} viewBox="0 0 10 12" fill="none">
                   <path d="M10 5L5 4.37114e-07L0 5L10 5Z" fill="#757575" />
                   <path d="M10 7L5 12L-4.37114e-07 7L10 7Z" fill="#757575" />
                 </svg>
-              </div>
-            </td>
-            <td style={{ fontFamily: "Montserrat", fontSize: "18px", fontWeight: 700, lineHeight: "24px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              </Div6>
+            </Td1>
+            <Td1>
+              <Div6>
                 最近修改
                 <svg xmlns="http://www.w3.org/2000/svg" width={10} height={12} viewBox="0 0 10 12" fill="none">
                   <path d="M10 5L5 4.37114e-07L0 5L10 5Z" fill="#757575" />
                   <path d="M10 7L5 12L-4.37114e-07 7L10 7Z" fill="#757575" />
                 </svg>
-              </div>
-            </td>
-            <td style={{ fontFamily: "Montserrat", fontSize: "18px", fontWeight: 700, lineHeight: "24px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              </Div6>
+            </Td1>
+            <Td1>
+              <Div6>
                 建立日期
                 <svg xmlns="http://www.w3.org/2000/svg" width={10} height={12} viewBox="0 0 10 12" fill="none">
                   <path d="M10 5L5 4.37114e-07L0 5L10 5Z" fill="#757575" />
                   <path d="M10 7L5 12L-4.37114e-07 7L10 7Z" fill="#757575" />
                 </svg>
-              </div>
-            </td>
+              </Div6>
+            </Td1>
             <td />
-          </tr>
+          </Tr0>
           {activities.map(({ name, status, responsesCount, lastModified, created }) => (
-            <tr style={{ height: "64px", borderTop: "2px solid #DADADA", borderBottom: "2px solid #DADADA" }}>
-              <td
-                style={{
-                  color: "#505050",
-                  fontFamily: "Montserrat",
-                  fontSize: "18px",
-                  textAlign: "center",
-                  fontWeight: 700,
-                }}
-              >
-                {name}
-              </td>
-              <td style={{ color: "#505050", fontFamily: "Montserrat", fontSize: "16px" }}>
-                {status === "open" ? "公開" : "私人"}
-              </td>
-              <td style={{ color: "#505050", fontFamily: "Montserrat", fontSize: "16px" }}>{responsesCount}</td>
-              <td style={{ color: "#505050", fontFamily: "Montserrat", fontSize: "16px" }}>
-                {lastModified.toISOString().split("T")[0]}
-              </td>
-              <td style={{ color: "#505050", fontFamily: "Montserrat", fontSize: "16px" }}>
-                {created.toISOString().split("T")[0]}
-              </td>
+            <Tr0>
+              <Td2>{name}</Td2>
+              <Td3>{status === "open" ? "公開" : "私人"}</Td3>
+              <Td3>{responsesCount}</Td3>
+              <Td3>{lastModified.toISOString().split("T")[0]}</Td3>
+              <Td3>{created.toISOString().split("T")[0]}</Td3>
               <td>
                 <svg xmlns="http://www.w3.org/2000/svg" width={15} height={20} viewBox="0 0 15 20" fill="none">
                   <path
@@ -93,10 +156,10 @@ export default function TableView({ activities }) {
                   />
                 </svg>
               </td>
-            </tr>
+            </Tr0>
           ))}
         </tbody>
-      </table>
+      </Table0>
     </div>
   )
 }

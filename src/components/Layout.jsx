@@ -154,50 +154,46 @@ export default function Layout() {
               <SectionItem>活動群組 3</SectionItem>
             </SectionContent>
           </div>
-          <div>
-            <SectionHeader
-              onClick={() =>
-                setExtendedItems(extendedItems =>
-                  extendedItems.includes("nfc")
-                    ? extendedItems.filter(item => item !== "nfc")
-                    : ["nfc", ...extendedItems],
-                )
-              }
+          <SectionHeader
+            onClick={() =>
+              setExtendedItems(extendedItems =>
+                extendedItems.includes("nfc")
+                  ? extendedItems.filter(item => item !== "nfc")
+                  : ["nfc", ...extendedItems],
+              )
+            }
+          >
+            NFT管理
+            <ExpandIconContainer
+              style={{
+                transform: extendedItems.includes("nfc") ? "" : "rotate(180deg)",
+              }}
             >
-              NFT管理
-              <ExpandIconContainer
-                style={{
-                  transform: extendedItems.includes("nfc") ? "" : "rotate(180deg)",
-                }}
-              >
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
-                </svg>
-              </ExpandIconContainer>
-            </SectionHeader>
-          </div>
-          <div>
-            <SectionHeader
-              onClick={() =>
-                setExtendedItems(extendedItems =>
-                  extendedItems.includes("lucky-draw")
-                    ? extendedItems.filter(item => item !== "lucky-draw")
-                    : ["lucky-draw", ...extendedItems],
-                )
-              }
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
+              </svg>
+            </ExpandIconContainer>
+          </SectionHeader>
+          <SectionHeader
+            onClick={() =>
+              setExtendedItems(extendedItems =>
+                extendedItems.includes("lucky-draw")
+                  ? extendedItems.filter(item => item !== "lucky-draw")
+                  : ["lucky-draw", ...extendedItems],
+              )
+            }
+          >
+            抽獎管理
+            <ExpandIconContainer
+              style={{
+                transform: extendedItems.includes("lucky-draw") ? "" : "rotate(180deg)",
+              }}
             >
-              抽獎管理
-              <ExpandIconContainer
-                style={{
-                  transform: extendedItems.includes("lucky-draw") ? "" : "rotate(180deg)",
-                }}
-              >
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
-                </svg>
-              </ExpandIconContainer>
-            </SectionHeader>
-          </div>
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Vector" d="M0 5.5L5 0.5L10 5.5H0Z" fill="black" />
+              </svg>
+            </ExpandIconContainer>
+          </SectionHeader>
         </NavigationMenu>
       </SideBar>
       <ContentContainer>
